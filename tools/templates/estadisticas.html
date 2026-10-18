@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block contenido %}
+<header class="envoltura cabecera">
+  <a href="{{ raiz }}">← {{ site.pais }} · todos los días</a>
+  <span class="cabecera__marca">Puyis de viaje</span>
+</header>
+
+<section class="envoltura entrada__cab">
+  <div class="etiqueta">{{ site.fechas }}</div>
+  <h1>El viaje en números</h1>
+  <p class="estad__nota">Se actualiza solo con cada día publicado ({{ totales.dias | length }} de {{ site.dias_totales }}).</p>
+</section>
+
+<section class="envoltura estad">
+  <div class="estad__destacados">
+    <div class="cifra cifra--acento">
+      <span class="cifra__num">{{ totales.km_total | entero }}</span>
+      <span class="cifra__txt">km recorridos en total</span>
+    </div>
+    <div class="cifra">
+      <span class="cifra__num">{{ totales.pasos | entero }}</span>
+      <span class="cifra__txt">pasos · {{ totales.km.pie | km }} a pie</span>
+    </div>
+    <div class="cifra">
+      <span class="cifra__num">{{ totales.km.avion | entero }}</span>
+      <span class="cifra__txt">km en avión</span>
+    </div>
+  </div>
+
+  <h2 class="estad__titulo">Por medio de transporte</h2>
+  {% set maximo = (totales.km.values() | max) or 1 %}
+  <ul class="barras">
+    {% for tr in site.transportes %}
+    <li class="barra{% if not totales.km[tr.clave] %} barra--vacia{% endif %}">
+      <span class="barra__nombre">{{ tr.nombre }}</span>
+      <span class="barra__pista"><span class="barra__relleno barra__relleno--{{ tr.clave }}" style="width:{{ (100 * totales.km[tr.clave] / maximo) | round(1) }}%"></span></span>
+      <span class="barra__valor">{{ totales.km[tr.clave] | km }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="estad__usados">
+    {% if totales.usados %}Medios de transporte usados: {{ totales.usados | map(attribute='nombre') | map('lower') | join(', ') }}.
+    {% else %}Todavía no hemos empezado a movernos.{% endif %}
+  </p>
+
+  <h2 class="estad__titulo">Y además…</h2>
+  <div class="estad__contadores">
+    {% for co in site.contadores %}
+    <div class="cifra">
+      <span class="cifra__num">{{ totales.contadores[co.clave] | entero }}</span>
+      <span class="cifra__txt">{{ co.nombre }}</span>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% if totales.dias %}
+  <h2 class="estad__titulo">Día a día</h2>
+  <div class="tabla-envoltura">
+    <table class="tabla">
+      <thead><tr><th scope="col">Día</th><th scope="col">Km</th><th scope="col">Pasos</th></tr></thead>
+      <tbody>
+        {% for d in totales.dias %}
+        <tr>
+          <td><a href="{{ raiz }}{{ d.e.ruta_url }}">{{ d.e.dia }} · {{ d.e.titulo }}</a></td>
+          <td>{{ d.km | km }}</td>
+          <td>{{ d.pasos | entero }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

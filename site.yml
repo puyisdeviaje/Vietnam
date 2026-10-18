@@ -9,6 +9,21 @@ intro: >-
 url_base: https://puyisdeviaje.github.io/Vietnam/
 menu_viajes: https://puyisdeviajemenu.wordpress.com/
 
+# Medios de transporte (km por día en cada entrada: estadisticas.km.<clave>)
+transportes:
+  - {clave: pie,   nombre: A pie}
+  - {clave: bici,  nombre: En bici}
+  - {clave: coche, nombre: En coche}
+  - {clave: bus,   nombre: En autobús}
+  - {clave: barco, nombre: En barco}
+  - {clave: tren,  nombre: En tren}
+  - {clave: avion, nombre: En avión}
+
+# Contadores curiosos (por día en cada entrada: estadisticas.contadores.<clave>)
+contadores:
+  - {clave: pho,     nombre: Cuencos de phở}
+  - {clave: banh_mi, nombre: Bocadillos (bánh mì)}
+
 # Los 19 días de la cuadrícula 4×5 (la casilla 20 muestra los kilómetros totales).
 # foto: imagen de la casilla hasta que se publica el día (fotos de Pexels).
 # fija: true → la casilla mantiene esa foto aunque el día esté publicado (vuelos).
@@ -17,7 +32,7 @@ calendario:
   - {dia: 2, fecha: "19", mes: dic, titulo: "Llegada a Hanói", foto: assets/img/dias/02.jpg}
   - {dia: 3, fecha: "20", mes: dic, titulo: "Hanói", foto: assets/img/dias/03.jpg}
   - {dia: 4, fecha: "21", mes: dic, titulo: "Traslado a Da Nang / Hội An", foto: assets/img/dias/04.jpg}
-  - {dia: 5, fecha: "22", mes: dic, titulo: "Clase de cocina y festival de las linternas", foto: assets/img/dias/05.jpg}
+  - {dia: 5, fecha: "22", mes: dic, titulo: "Clase de cocina y festival", foto: assets/img/dias/05.jpg}
   - {dia: 6, fecha: "23", mes: dic, titulo: "Hội An en bici", foto: assets/img/dias/06.jpg}
   - {dia: 7, fecha: "24", mes: dic, titulo: "Traslado a Phong Nha", foto: assets/img/dias/07.jpg}
   - {dia: 8, fecha: "25", mes: dic, titulo: "Phong Nha", foto: assets/img/dias/08.jpg}

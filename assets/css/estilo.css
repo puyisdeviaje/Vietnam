@@ -72,8 +72,9 @@ a:hover{color:var(--acento-hover)}
 .casilla--futura img{filter:saturate(.45) brightness(.72)}
 .casilla--futura .casilla__fecha,.casilla--futura .casilla__lugar{color:#C9CEC9}
 .casilla--cifras{background:var(--acento)}
-.casilla--cifras>div{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8px;color:#141413}
-.casilla--cifras>div::after{display:none}
+.casilla--cifras>a{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8px;color:#141413}
+.casilla--cifras>a::after{display:none}
+.casilla--cifras>a:hover{background:var(--acento-hover);color:#141413}
 .cifras__num{font-family:var(--display);font-weight:800;font-size:clamp(22px,7vw,48px);line-height:1}
 .cifras__txt{font-size:clamp(10px,2.7vw,14px);font-weight:700;line-height:1.15;margin-top:2px}
 .cifras__sub{font-size:clamp(9px,2.4vw,12px);font-weight:500;margin-top:4px;opacity:.8}
@@ -132,3 +133,40 @@ a:hover{color:var(--acento-hover)}
   .texto p,.texto p:first-child{font-size:18px}
   .dias__cab h2{font-size:32px}
 }
+
+/* Colores por medio de transporte */
+:root{--t-pie:#FF8A5B;--t-bici:#7BD389;--t-coche:#5DB8F5;--t-bus:#A897FF;--t-barco:#3FD0C9;--t-tren:#F27EB3;--t-avion:#F2B33D}
+.dato__punto{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.dato__punto--pie,.barra__relleno--pie{background:var(--t-pie)}
+.dato__punto--bici,.barra__relleno--bici{background:var(--t-bici)}
+.dato__punto--coche,.barra__relleno--coche{background:var(--t-coche)}
+.dato__punto--bus,.barra__relleno--bus{background:var(--t-bus)}
+.dato__punto--barco,.barra__relleno--barco{background:var(--t-barco)}
+.dato__punto--tren,.barra__relleno--tren{background:var(--t-tren)}
+.dato__punto--avion,.barra__relleno--avion{background:var(--t-avion)}
+.entrada__portada{width:100%;aspect-ratio:16/9;object-fit:cover}
+.texto--pendiente p,.texto--pendiente p:first-child{font-size:18px;color:var(--suave);font-style:italic;text-align:center}
+
+/* Estadísticas */
+.estad{padding-bottom:48px}
+.estad__nota{margin:16px 0 0;color:var(--suave);font-size:16px}
+.estad__destacados,.estad__contadores{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.cifra{border:1px solid var(--linea);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:6px}
+.cifra--acento{background:var(--acento);border-color:var(--acento);color:#141413}
+.cifra__num{font-family:var(--display);font-weight:800;font-size:clamp(40px,8vw,64px);line-height:1;font-variant-numeric:tabular-nums}
+.cifra__txt{font-size:15px;font-weight:600;color:inherit;opacity:.85}
+.estad__titulo{font-family:var(--display);font-weight:600;font-size:28px;margin:48px 0 18px}
+.barras{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.barra{display:grid;grid-template-columns:120px 1fr 90px;align-items:center;gap:12px;font-size:15px}
+.barra__pista{height:12px;border-radius:6px;background:#1A211E;overflow:hidden}
+.barra__relleno{display:block;height:100%;border-radius:6px;min-width:0}
+.barra__valor{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.barra--vacia{color:var(--suave)}
+.estad__usados{color:var(--texto-2);margin:18px 0 0}
+.tabla-envoltura{overflow-x:auto;border:1px solid var(--linea);border-radius:8px}
+.tabla{width:100%;border-collapse:collapse;font-size:15px}
+.tabla th,.tabla td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--linea)}
+.tabla td:not(:first-child),.tabla th:not(:first-child){white-space:nowrap}
+.tabla th:not(:first-child),.tabla td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+.tabla tr:last-child td{border-bottom:0}
+@media (max-width:600px){.barra{grid-template-columns:92px 1fr 72px;font-size:14px}}

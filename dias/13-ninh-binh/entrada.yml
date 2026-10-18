@@ -1,0 +1,14 @@
+# Día 13 · 30 dic · Ninh Bình
+dia: 13
+fecha: 2026-12-30
+lugar: Ninh Bình
+publicado: false
+extracto: ""
+# tarjeta: fotos/xx.jpg            # foto propia para la portada (opcional)
+# mapa: {imagen: mapa.jpg, ruta: ruta.geojson, km_pie: 0, km_vehiculo: 0, vehiculo: En bus}
+estadisticas:
+  pasos: 0
+  km: {pie: 0, bici: 0, coche: 0, bus: 0, barco: 0, tren: 0, avion: 0}
+  contadores: {pho: 0, banh_mi: 0}
+fotos: []
+cuerpo: []

@@ -13,8 +13,8 @@
   <h1>{{ e.titulo }}</h1>
 </section>
 
-{% if e.mapa %}
 <section class="envoltura">
+  {% if e.mapa %}
   <figure class="mapa">
     <div class="mapa__lienzo">
       <img src="{{ e.mapa.imagen }}" alt="Mapa de satélite con el recorrido del día">
@@ -24,21 +24,33 @@
     </div>
     <figcaption><span>El recorrido del día. Toca un número para ir a su foto.</span></figcaption>
   </figure>
+  {% else %}
+  <figure class="mapa">
+    <div class="mapa__lienzo"><img class="entrada__portada" src="{{ raiz }}{{ e.imagen_url }}" alt=""></div>
+  </figure>
+  {% endif %}
+
+  {% set km = e.estadisticas.km %}
   <div class="datos">
-    {% if e.mapa.km_pie %}<div class="dato"><i style="color:var(--pie)">—</i>A pie <strong>{{ e.mapa.km_pie | km }}</strong></div>{% endif %}
-    {% if e.mapa.km_vehiculo %}<div class="dato"><i style="color:var(--vehiculo)">—</i>{{ e.mapa.vehiculo | default('En vehículo') }} <strong>{{ e.mapa.km_vehiculo | km }}</strong></div>{% endif %}
-    <div class="dato">{{ e.fotos | length }} fotos</div>
+    {% for tr in site.transportes if km[tr.clave] %}
+    <div class="dato"><i class="dato__punto dato__punto--{{ tr.clave }}"></i>{{ tr.nombre }} <strong>{{ km[tr.clave] | km }}</strong></div>
+    {% endfor %}
+    {% if e.estadisticas.pasos %}<div class="dato">{{ e.estadisticas.pasos | entero }} pasos</div>{% endif %}
+    {% if e.fotos %}<div class="dato">{{ e.fotos | length }} fotos</div>{% endif %}
   </div>
-  {% if e.mapa.ruta %}
+
+  {% if e.mapa and e.mapa.ruta %}
   <details class="interactivo" id="recorrido">
     <summary>Ver el recorrido interactivo →</summary>
     <div id="mapa-interactivo"></div>
   </details>
   {% endif %}
 </section>
-{% endif %}
 
 <div class="envoltura cuerpo">
+{% if not e.cuerpo %}
+  <div class="texto texto--pendiente"><p>Aquí irá el resumen del día, con el mapa del recorrido y las fotos.</p></div>
+{% endif %}
 {% for b in e.cuerpo %}
   {% if b.texto %}
   <div class="texto">{{ b.texto | md }}</div>
@@ -56,10 +68,10 @@
 {% endfor %}
 </div>
 
-<nav class="envoltura navdias" aria-label="Entre días">
+{% if anterior or siguiente %}<nav class="envoltura navdias" aria-label="Entre días">
   {% if anterior %}<a href="{{ raiz }}{{ anterior.ruta_url }}"><span class="etiqueta">← Día {{ anterior.dia }}</span><strong>{{ anterior.titulo }}</strong></a>{% endif %}
   {% if siguiente %}<a href="{{ raiz }}{{ siguiente.ruta_url }}"><span class="etiqueta">Día {{ siguiente.dia }} →</span><strong>{{ siguiente.titulo }}</strong></a>{% endif %}
-</nav>
+</nav>{% endif %}
 
 <dialog class="visor" id="visor"><img alt=""></dialog>
 {% endblock %}

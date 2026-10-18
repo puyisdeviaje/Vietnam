@@ -21,11 +21,11 @@
     </li>
     {% endfor %}
     <li class="casilla casilla--cifras">
-      <div>
-        <span class="cifras__num">{{ totales.km | km_entero }}</span>
+      <a href="estadisticas/" aria-label="Estadísticas del viaje">
+        <span class="cifras__num">{{ totales.km_total | entero }}</span>
         <span class="cifras__txt">km recorridos</span>
-        {% if totales.pie %}<span class="cifras__sub">{{ totales.pie | km_entero }} a pie</span>{% endif %}
-      </div>
+        <span class="cifras__sub">{{ totales.pasos | entero }} pasos · ver más →</span>
+      </a>
     </li>
   </ol>
 
