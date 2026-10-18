@@ -37,12 +37,14 @@ def render(segs,estilo='hibrido',W=1600,H=1000,pad=140,titulo='',leyenda=(),atri
     F='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'; FB='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
     fb,f,s=ImageFont.truetype(FB,44),ImageFont.truetype(F,32),ImageFont.truetype(F,22)
     ov=Image.new('RGBA',(W,H),(0,0,0,0)); d=ImageDraw.Draw(ov)
-    bw=max(d.textlength(titulo,font=fb),*[d.textlength(t,font=f)+80 for t,_ in leyenda])+70
-    d.rounded_rectangle((40,40,40+bw,40+90+60*len(leyenda)),24,fill=(255,255,255,235))
-    d.text((70,62),titulo,font=fb,fill='#222')
+    if titulo or leyenda:
+        bw=max(d.textlength(titulo,font=fb),*[d.textlength(t,font=f)+80 for t,_ in leyenda])+70
+        d.rounded_rectangle((40,40,40+bw,40+90+60*len(leyenda)),24,fill=(255,255,255,235))
+        d.text((70,62),titulo,font=fb,fill='#222')
     for i,(t,c) in enumerate(leyenda):
         y=150+60*i; d.line((72,y,132,y),fill=c,width=10); d.text((150,y-20),t,font=f,fill='#333')
-    w=d.textlength(atrib,font=s); d.rectangle((W-w-24,H-36,W,H),fill=(255,255,255,220)); d.text((W-w-12,H-32),atrib,font=s,fill='#555')
+    if atrib:
+        w=d.textlength(atrib,font=s); d.rectangle((W-w-24,H-36,W,H),fill=(255,255,255,220)); d.text((W-w-12,H-32),atrib,font=s,fill='#555')
     img.alpha_composite(ov); return img.convert('RGB')
 def km(p):
     return sum(math.hypot((c-a)*math.cos(math.radians(b))*111.32,(e-b)*110.57) for (a,b),(c,e) in zip(p,p[1:]))
