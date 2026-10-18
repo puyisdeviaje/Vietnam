@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>{{ titulo_pagina }}</title>
+<meta name="description" content="{{ descripcion }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ titulo_pagina }}">
+<meta property="og:description" content="{{ descripcion }}">
+<meta property="og:image" content="{{ og_imagen }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% block cabeza %}{% endblock %}
+<link rel="stylesheet" href="{{ raiz }}assets/css/estilo.css">
+</head>
+<body>
+{% block contenido %}{% endblock %}
+<footer class="envoltura pie">
+  <a href="{{ site.menu_viajes }}">← Todos los viajes</a>
+  <span>Mapas: imágenes © Esri, Maxar, Earthstar Geographics</span>
+</footer>
+{% block guion %}{% endblock %}
+</body>
+</html>

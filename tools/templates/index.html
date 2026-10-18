@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block contenido %}
+<header class="envoltura cabecera">
+  <a href="{{ site.menu_viajes }}">← Todos los viajes</a>
+  <span class="cabecera__marca">Puyis de viaje</span>
+</header>
+
+<section class="portada">
+  <img src="assets/img/portada.jpg" alt="Vista de satélite de Hội An">
+  <div class="envoltura portada__texto">
+    <div class="etiqueta">{{ site.fechas }}</div>
+    <h1>{{ site.pais }}</h1>
+    <p>{{ site.intro }}</p>
+  </div>
+</section>
+
+<section class="envoltura ruta">
+  <div class="etiqueta etiqueta--suave">La ruta</div>
+  <ol>
+    {% for r in site.ruta %}<li><strong>{{ r.lugar }}</strong><span>{{ r.fechas }}</span></li>{% endfor %}
+  </ol>
+</section>
+
+<section class="envoltura dias">
+  <div class="dias__cab">
+    <h2>El viaje, día a día</h2>
+    <span>Del primer día al último</span>
+  </div>
+  {% if entradas %}
+  <div class="rejilla">
+    {% for e in entradas %}
+    <a class="tarjeta" href="{{ e.ruta_url }}">
+      <img src="{{ e.ruta_url }}{{ e.tarjeta }}" alt="" loading="lazy">
+      <div class="etiqueta">Día {{ e.dia }} · {{ e.fecha_corta }}</div>
+      <h3>{{ e.titulo }}</h3>
+      {% if e.extracto %}<p>{{ e.extracto }}</p>{% endif %}
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="vacio">
+    <strong>El viaje empieza el 19 de diciembre</strong>
+    Cada noche aparecerá aquí un nuevo día.
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

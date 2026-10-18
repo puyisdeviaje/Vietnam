@@ -1,0 +1,17 @@
+# Datos generales del blog
+titulo: Puyis en Vietnam
+pais: Vietnam
+fechas: 19 dic 2026 — 4 ene 2027
+dias_totales: 17
+intro: >-
+  17 días de norte a centro, contados cada noche con el mapa de lo que
+  hemos recorrido y las fotos del día.
+url_base: https://puyisdeviaje.github.io/Vietnam/
+menu_viajes: https://puyisdeviajemenu.wordpress.com/
+ruta:
+  - {lugar: Hanói, fechas: 19–20 dic}
+  - {lugar: Hội An, fechas: 21–23 dic}
+  - {lugar: Phong Nha, fechas: 24–26 dic}
+  - {lugar: Ninh Bình, fechas: 27–30 dic}
+  - {lugar: Hanói, fechas: 31 dic–1 ene}
+  - {lugar: Bahía de Ha Long, fechas: 2–4 ene}

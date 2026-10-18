@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% block cabeza %}
+{% if e.mapa and e.mapa.ruta %}<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">{% endif %}
+{% endblock %}
+{% block contenido %}
+<header class="envoltura cabecera">
+  <a href="{{ raiz }}">← {{ site.pais }} · todos los días</a>
+  <span class="cabecera__marca">Día {{ e.dia }} de {{ site.dias_totales }}</span>
+</header>
+
+<section class="envoltura entrada__cab">
+  <div class="etiqueta">Día {{ e.dia }} · {{ e.fecha_texto }} · {{ e.lugar }}</div>
+  <h1>{{ e.titulo }}</h1>
+</section>
+
+{% if e.mapa %}
+<section class="envoltura">
+  <figure class="mapa">
+    <div class="mapa__lienzo">
+      <img src="{{ e.mapa.imagen }}" alt="Mapa de satélite con el recorrido del día">
+      {% for f in e.fotos if f.x is defined %}
+      <a class="pin" href="#foto-{{ f.n }}" aria-label="Foto {{ f.n }}" style="left:{{ f.x }}%;top:{{ f.y }}%">{{ f.n }}</a>
+      {% endfor %}
+    </div>
+    <figcaption><span>El recorrido del día. Toca un número para ir a su foto.</span></figcaption>
+  </figure>
+  <div class="datos">
+    {% if e.mapa.km_pie %}<div class="dato"><i style="color:var(--pie)">—</i>A pie <strong>{{ e.mapa.km_pie | km }}</strong></div>{% endif %}
+    {% if e.mapa.km_vehiculo %}<div class="dato"><i style="color:var(--vehiculo)">—</i>{{ e.mapa.vehiculo | default('En vehículo') }} <strong>{{ e.mapa.km_vehiculo | km }}</strong></div>{% endif %}
+    <div class="dato">{{ e.fotos | length }} fotos</div>
+  </div>
+  {% if e.mapa.ruta %}
+  <details class="interactivo" id="recorrido">
+    <summary>Ver el recorrido interactivo →</summary>
+    <div id="mapa-interactivo"></div>
+  </details>
+  {% endif %}
+</section>
+{% endif %}
+
+<div class="envoltura cuerpo">
+{% for b in e.cuerpo %}
+  {% if b.texto %}
+  <div class="texto">{{ b.texto | md }}</div>
+  {% elif b.fotos %}
+  {% set grupo = b.fotos | map('foto_por_n', e.fotos) | list %}
+  {% if grupo | length > 1 %}<div class="pareja">{% endif %}
+  {% for f in grupo %}
+  <figure class="foto" id="foto-{{ f.n }}">
+    <img src="{{ f.archivo }}" alt="{{ f.pie | default('') }}" loading="lazy" data-visor>
+    <figcaption><span class="foto__n">{{ f.n }}</span>{% if f.hora %}<span class="foto__hora">{{ f.hora }}</span>{% endif %}<span>{{ f.pie | default('') }}</span></figcaption>
+  </figure>
+  {% endfor %}
+  {% if grupo | length > 1 %}</div>{% endif %}
+  {% endif %}
+{% endfor %}
+</div>
+
+<nav class="envoltura navdias" aria-label="Entre días">
+  {% if anterior %}<a href="{{ raiz }}{{ anterior.ruta_url }}"><span class="etiqueta">← Día {{ anterior.dia }}</span><strong>{{ anterior.titulo }}</strong></a>{% endif %}
+  {% if siguiente %}<a href="{{ raiz }}{{ siguiente.ruta_url }}"><span class="etiqueta">Día {{ siguiente.dia }} →</span><strong>{{ siguiente.titulo }}</strong></a>{% endif %}
+</nav>
+
+<dialog class="visor" id="visor"><img alt=""></dialog>
+{% endblock %}
+
+{% block guion %}
+<script>
+(function(){
+  var v=document.getElementById('visor'), vi=v.querySelector('img');
+  document.querySelectorAll('[data-visor]').forEach(function(i){
+    i.addEventListener('click',function(){vi.src=i.currentSrc||i.src;vi.alt=i.alt;v.showModal();});
+  });
+  v.addEventListener('click',function(){v.close();});
+})();
+</script>
+{% if e.mapa and e.mapa.ruta %}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var fotos={{ e.fotos_mapa | tojson }}, hecho=false;
+  document.getElementById('recorrido').addEventListener('toggle',function(){
+    if(!this.open||hecho) return; hecho=true;
+    var m=L.map('mapa-interactivo',{scrollWheelZoom:false});
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imágenes © Esri, Maxar, Earthstar Geographics'}).addTo(m);
+    fetch('{{ e.mapa.ruta }}').then(function(r){return r.json();}).then(function(g){
+      var capa=L.geoJSON(g,{style:function(f){var p=f.properties.modo==='pie';return {color:p?'#FF8A5B':'#5DB8F5',weight:5,opacity:.95};}}).addTo(m);
+      m.fitBounds(capa.getBounds(),{padding:[30,30]});
+    });
+    fotos.forEach(function(f){
+      var ic=L.divIcon({className:'pin-mapa',html:String(f.n),iconSize:[28,28]});
+      L.marker([f.lat,f.lon],{icon:ic}).addTo(m).bindPopup('<a href="#foto-'+f.n+'"><img src="'+f.archivo+'" alt=""></a>'+(f.hora?'<b>'+f.hora+'</b> ':'')+(f.pie||''));
+    });
+  });
+})();
+</script>
+{% endif %}
+{% endblock %}
