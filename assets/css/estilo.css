@@ -145,7 +145,7 @@ a:hover{color:var(--acento-hover)}
 .dato__punto--barco,.barra__relleno--barco{background:var(--t-barco)}
 .dato__punto--tren,.barra__relleno--tren{background:var(--t-tren)}
 .dato__punto--avion,.barra__relleno--avion{background:var(--t-avion)}
-.entrada__portada{width:100%;aspect-ratio:16/9;object-fit:cover}
+.mapa__pendiente{aspect-ratio:16/10;border:1px dashed var(--linea);border-radius:8px;background:#141A17;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--suave);font-size:16px;text-align:center;padding:24px}
 .texto--pendiente p,.texto--pendiente p:first-child{font-size:18px;color:var(--suave);font-style:italic;text-align:center}
 
 /* Estadísticas */
