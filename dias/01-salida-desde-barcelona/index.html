@@ -9,14 +9,14 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Día 1 · Salida desde Barcelona — Puyis en Vietnam">
 <meta property="og:description" content="Viernes 18 de diciembre · Barcelona">
-<meta property="og:image" content="https://puyisdeviaje.github.io/Vietnam/assets/img/dias/01.jpg">
+<meta property="og:image" content="https://puyisdeviaje.github.io/Vietnam/dias/01-salida-desde-barcelona/mapa.jpg">
 <meta property="og:url" content="https://puyisdeviaje.github.io/Vietnam/dias/01-salida-desde-barcelona/">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
 <link rel="stylesheet" href="../../assets/css/estilo.css">
 </head>
@@ -35,20 +35,28 @@
 <section class="envoltura">
   
   <figure class="mapa">
-    <div class="mapa__pendiente">
-      <svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg>
-      <span>Aquí irá el mapa del recorrido del día</span>
+    <div class="mapa__lienzo">
+      <img src="mapa.jpg" alt="Mapa de satélite con el recorrido del día">
+      
     </div>
+    <figcaption><span>El recorrido del día. Toca un número para ir a su foto.</span></figcaption>
   </figure>
   
 
   
   <div class="datos">
     
+    <div class="dato"><i class="dato__punto dato__punto--avion"></i>En avión <strong>10393,0 km</strong></div>
+    
     
     
   </div>
 
+  
+  <details class="interactivo" id="recorrido">
+    <summary>Ver el recorrido interactivo →</summary>
+    <div id="mapa-interactivo"></div>
+  </details>
   
 </section>
 
@@ -75,6 +83,26 @@
     i.addEventListener('click',function(){vi.src=i.currentSrc||i.src;vi.alt=i.alt;v.showModal();});
   });
   v.addEventListener('click',function(){v.close();});
+})();
+</script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var fotos=[], hecho=false;
+  document.getElementById('recorrido').addEventListener('toggle',function(){
+    if(!this.open||hecho) return; hecho=true;
+    var m=L.map('mapa-interactivo',{scrollWheelZoom:false});
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imágenes © Esri, Maxar, Earthstar Geographics'}).addTo(m);
+    fetch('ruta.geojson').then(function(r){return r.json();}).then(function(g){
+      var capa=L.geoJSON(g,{style:function(f){var c={pie:'#FF8A5B',bici:'#7BD389',coche:'#5DB8F5',bus:'#A897FF',barco:'#3FD0C9',tren:'#F27EB3',avion:'#F2B33D',vehiculo:'#5DB8F5'}[f.properties.modo]||'#5DB8F5';return {color:c,weight:5,opacity:.95};}}).addTo(m);
+      m.fitBounds(capa.getBounds(),{padding:[30,30]});
+    });
+    fotos.forEach(function(f){
+      var ic=L.divIcon({className:'pin-mapa',html:String(f.n),iconSize:[28,28]});
+      L.marker([f.lat,f.lon],{icon:ic}).addTo(m).bindPopup('<a href="#foto-'+f.n+'"><img src="'+f.archivo+'" alt=""></a>'+(f.hora?'<b>'+f.hora+'</b> ':'')+(f.pie||''));
+    });
+  });
 })();
 </script>
 

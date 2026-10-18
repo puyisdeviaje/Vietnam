@@ -99,7 +99,7 @@
     var m=L.map('mapa-interactivo',{scrollWheelZoom:false});
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,attribution:'Imágenes © Esri, Maxar, Earthstar Geographics'}).addTo(m);
     fetch('{{ e.mapa.ruta }}').then(function(r){return r.json();}).then(function(g){
-      var capa=L.geoJSON(g,{style:function(f){var p=f.properties.modo==='pie';return {color:p?'#FF8A5B':'#5DB8F5',weight:5,opacity:.95};}}).addTo(m);
+      var capa=L.geoJSON(g,{style:function(f){var c={pie:'#FF8A5B',bici:'#7BD389',coche:'#5DB8F5',bus:'#A897FF',barco:'#3FD0C9',tren:'#F27EB3',avion:'#F2B33D',vehiculo:'#5DB8F5'}[f.properties.modo]||'#5DB8F5';return {color:c,weight:5,opacity:.95};}}).addTo(m);
       m.fitBounds(capa.getBounds(),{padding:[30,30]});
     });
     fotos.forEach(function(f){
