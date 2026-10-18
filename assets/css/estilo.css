@@ -54,7 +54,7 @@ a:hover{color:var(--acento-hover)}
 .vacio strong{display:block;font-family:var(--display);font-size:28px;color:var(--texto);margin-bottom:8px}
 
 /* Inicio: cuadrícula 4×4 que cabe en el móvil sin scroll */
-.inicio{max-width:min(760px,calc(100vh - 150px));margin:0 auto;padding:0 12px}
+.inicio{max-width:min(720px,calc((100vh - 160px) * 0.8));min-width:min(100%,360px);margin:0 auto;padding:0 12px}
 .inicio__cab{display:flex;justify-content:space-between;align-items:center;padding:10px 4px 0}
 .inicio__volver{font-size:15px;font-weight:500;padding:10px 0}
 .inicio__titulo{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;padding:6px 4px 16px}
@@ -68,9 +68,15 @@ a:hover{color:var(--acento-hover)}
 .casilla__fecha,.casilla__lugar{position:absolute;left:8px;right:6px;z-index:1;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .casilla__fecha{top:6px;font-family:var(--display);font-weight:800;font-size:clamp(18px,5.6vw,40px);line-height:1}
 .casilla__fecha small{display:block;font-family:var(--cuerpo);font-weight:600;font-size:clamp(10px,2.6vw,13px);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
-.casilla__lugar{bottom:6px;font-size:clamp(10px,2.7vw,14px);font-weight:600;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.casilla__lugar{bottom:6px;font-size:clamp(9.5px,2.6vw,14px);font-weight:600;line-height:1.15;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .casilla--futura img{filter:saturate(.45) brightness(.72)}
 .casilla--futura .casilla__fecha,.casilla--futura .casilla__lugar{color:#C9CEC9}
+.casilla--cifras{background:var(--acento)}
+.casilla--cifras>div{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8px;color:#141413}
+.casilla--cifras>div::after{display:none}
+.cifras__num{font-family:var(--display);font-weight:800;font-size:clamp(22px,7vw,48px);line-height:1}
+.cifras__txt{font-size:clamp(10px,2.7vw,14px);font-weight:700;line-height:1.15;margin-top:2px}
+.cifras__sub{font-size:clamp(9px,2.4vw,12px);font-weight:500;margin-top:4px;opacity:.8}
 .inicio__intro{margin:20px 4px 32px;font-size:16px;color:var(--suave);max-width:620px}
 
 /* Entrada */

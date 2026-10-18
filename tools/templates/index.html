@@ -13,13 +13,20 @@
   <ol class="calendario">
     {% for c in calendario %}
     <li class="casilla{% if not c.entrada %} casilla--futura{% endif %}">
-      {% if c.entrada %}<a href="{{ c.entrada.ruta_url }}" aria-label="Día {{ c.dia }}: {{ c.entrada.titulo }}">{% else %}<div>{% endif %}
+      {% if c.entrada %}<a href="{{ c.entrada.ruta_url }}" aria-label="Día {{ c.dia }}: {{ c.titulo }}">{% else %}<div>{% endif %}
         <img src="{{ c.imagen }}" alt="" loading="{{ 'eager' if loop.index <= 8 else 'lazy' }}">
         <span class="casilla__fecha">{{ c.fecha }}<small>{{ c.mes }}</small></span>
-        <span class="casilla__lugar">{{ c.lugar }}</span>
+        <span class="casilla__lugar">{{ c.titulo }}</span>
       {% if c.entrada %}</a>{% else %}</div>{% endif %}
     </li>
     {% endfor %}
+    <li class="casilla casilla--cifras">
+      <div>
+        <span class="cifras__num">{{ totales.km | km_entero }}</span>
+        <span class="cifras__txt">km recorridos</span>
+        {% if totales.pie %}<span class="cifras__sub">{{ totales.pie | km_entero }} a pie</span>{% endif %}
+      </div>
+    </li>
   </ol>
 
   <p class="inicio__intro">{{ site.intro }}</p>

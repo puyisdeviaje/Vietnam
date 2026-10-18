@@ -1,31 +1,34 @@
 # Datos generales del blog
 titulo: Puyis en Vietnam
 pais: Vietnam
-fechas: 19 dic 2026 — 4 ene 2027
-dias_totales: 16
+fechas: 18 dic 2026 — 5 ene 2027
+dias_totales: 19
 intro: >-
-  16 días de norte a centro, contados cada noche con el mapa de lo que
+  19 días, de Barcelona a Vietnam y vuelta, contados cada noche con el mapa de lo que
   hemos recorrido y las fotos del día.
 url_base: https://puyisdeviaje.github.io/Vietnam/
 menu_viajes: https://puyisdeviajemenu.wordpress.com/
 
-# Los 16 días de la cuadrícula (el 19 y el 20 van juntos).
+# Los 19 días de la cuadrícula 4×5 (la casilla 20 muestra los kilómetros totales).
 # foto: imagen de la casilla hasta que se publica el día (fotos de Pexels).
-# fija: true → la casilla mantiene esa foto aunque el día esté publicado (vuelos de ida y vuelta).
+# fija: true → la casilla mantiene esa foto aunque el día esté publicado (vuelos).
 calendario:
-  - {dia: 1,  fecha: "19–20", mes: dic, lugar: Hanói, fija: true, foto: assets/img/dias/01.jpg}
-  - {dia: 2,  fecha: "21", mes: dic, lugar: Hội An, foto: assets/img/dias/02.jpg}
-  - {dia: 3,  fecha: "22", mes: dic, lugar: Hội An, foto: assets/img/dias/03.jpg}
-  - {dia: 4,  fecha: "23", mes: dic, lugar: Hội An, foto: assets/img/dias/04.jpg}
-  - {dia: 5,  fecha: "24", mes: dic, lugar: Phong Nha, foto: assets/img/dias/05.jpg}
-  - {dia: 6,  fecha: "25", mes: dic, lugar: Phong Nha, foto: assets/img/dias/06.jpg}
-  - {dia: 7,  fecha: "26", mes: dic, lugar: Phong Nha, foto: assets/img/dias/07.jpg}
-  - {dia: 8,  fecha: "27", mes: dic, lugar: Ninh Bình, foto: assets/img/dias/08.jpg}
-  - {dia: 9,  fecha: "28", mes: dic, lugar: Ninh Bình, foto: assets/img/dias/09.jpg}
-  - {dia: 10, fecha: "29", mes: dic, lugar: Ninh Bình, foto: assets/img/dias/10.jpg}
-  - {dia: 11, fecha: "30", mes: dic, lugar: Ninh Bình, foto: assets/img/dias/11.jpg}
-  - {dia: 12, fecha: "31", mes: dic, lugar: Hanói, foto: assets/img/dias/12.jpg}
-  - {dia: 13, fecha: "1",  mes: ene, lugar: Hanói, foto: assets/img/dias/13.jpg}
-  - {dia: 14, fecha: "2",  mes: ene, lugar: Ha Long, foto: assets/img/dias/14.jpg}
-  - {dia: 15, fecha: "3",  mes: ene, lugar: Ha Long, foto: assets/img/dias/15.jpg}
-  - {dia: 16, fecha: "4",  mes: ene, lugar: Ha Long, fija: true, foto: assets/img/dias/16.jpg}
+  - {dia: 1, fecha: "18", mes: dic, titulo: "Salida desde Barcelona", foto: assets/img/dias/01.jpg, fija: true}
+  - {dia: 2, fecha: "19", mes: dic, titulo: "Llegada a Hanói", foto: assets/img/dias/02.jpg}
+  - {dia: 3, fecha: "20", mes: dic, titulo: "Hanói", foto: assets/img/dias/03.jpg}
+  - {dia: 4, fecha: "21", mes: dic, titulo: "Traslado a Da Nang / Hội An", foto: assets/img/dias/04.jpg}
+  - {dia: 5, fecha: "22", mes: dic, titulo: "Clase de cocina y festival de las linternas", foto: assets/img/dias/05.jpg}
+  - {dia: 6, fecha: "23", mes: dic, titulo: "Hội An en bici", foto: assets/img/dias/06.jpg}
+  - {dia: 7, fecha: "24", mes: dic, titulo: "Traslado a Phong Nha", foto: assets/img/dias/07.jpg}
+  - {dia: 8, fecha: "25", mes: dic, titulo: "Phong Nha", foto: assets/img/dias/08.jpg}
+  - {dia: 9, fecha: "26", mes: dic, titulo: "Phong Nha", foto: assets/img/dias/09.jpg}
+  - {dia: 10, fecha: "27", mes: dic, titulo: "Traslado a Ninh Bình", foto: assets/img/dias/10.jpg}
+  - {dia: 11, fecha: "28", mes: dic, titulo: "Ninh Bình", foto: assets/img/dias/11.jpg}
+  - {dia: 12, fecha: "29", mes: dic, titulo: "Ninh Bình", foto: assets/img/dias/12.jpg}
+  - {dia: 13, fecha: "30", mes: dic, titulo: "Ninh Bình", foto: assets/img/dias/13.jpg}
+  - {dia: 14, fecha: "31", mes: dic, titulo: "Nochevieja en Hanói", foto: assets/img/dias/14.jpg}
+  - {dia: 15, fecha: "1", mes: ene, titulo: "Año Nuevo en Hanói", foto: assets/img/dias/15.jpg}
+  - {dia: 16, fecha: "2", mes: ene, titulo: "Bahía de Ha Long", foto: assets/img/dias/16.jpg}
+  - {dia: 17, fecha: "3", mes: ene, titulo: "Bahía de Ha Long", foto: assets/img/dias/17.jpg}
+  - {dia: 18, fecha: "4", mes: ene, titulo: "Vuelo de vuelta", foto: assets/img/dias/18.jpg, fija: true}
+  - {dia: 19, fecha: "5", mes: ene, titulo: "Llegada a casa", foto: assets/img/dias/19.jpg, fija: true}

@@ -46,6 +46,7 @@ def entorno():
     env = Environment(loader=FileSystemLoader(RAIZ / 'tools' / 'templates'), autoescape=True)
     env.filters['md'] = lambda t: __import__('markupsafe').Markup(markdown.markdown(t or ''))
     env.filters['km'] = lambda v: f"{float(v):.1f} km".replace('.', ',')
+    env.filters['km_entero'] = lambda v: f"{round(float(v)):,}".replace(',', '.')
     env.filters['foto_por_n'] = lambda n, fotos: next(f for f in fotos if f['n'] == n)
     return env
 
@@ -76,8 +77,10 @@ def construir(destino: Path, vista: bool):
         else:
             c['imagen'] = c['foto']
         calendario.append(c)
+    totales = {'pie': sum(float((e.get('mapa') or {}).get('km_pie') or 0) for e in entradas)}
+    totales['km'] = totales['pie'] + sum(float((e.get('mapa') or {}).get('km_vehiculo') or 0) for e in entradas)
     html = env.get_template('index.html').render(
-        site=site, entradas=entradas, calendario=calendario, raiz='',
+        site=site, entradas=entradas, calendario=calendario, totales=totales, raiz='',
         titulo_pagina=site['titulo'], descripcion=site['intro'],
         og_imagen=base + 'assets/img/compartir.jpg', og_url=base)
     (destino / 'index.html').write_text(html, encoding='utf-8')
