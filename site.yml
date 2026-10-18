@@ -9,29 +9,23 @@ intro: >-
 url_base: https://puyisdeviaje.github.io/Vietnam/
 menu_viajes: https://puyisdeviajemenu.wordpress.com/
 
-# Foto provisional de cada ciudad (hasta que se publica el día)
-ciudades:
-  Hanói: assets/img/ciudades/hanoi.jpg
-  Hội An: assets/img/ciudades/hoi-an.jpg
-  Phong Nha: assets/img/ciudades/phong-nha.jpg
-  Ninh Bình: assets/img/ciudades/ninh-binh.jpg
-  Ha Long: assets/img/ciudades/ha-long.jpg
-
-# Los 16 días de la cuadrícula (el 19 y el 20 van juntos)
+# Los 16 días de la cuadrícula (el 19 y el 20 van juntos).
+# foto: imagen de la casilla hasta que se publica el día (fotos de Pexels).
+# fija: true → la casilla mantiene esa foto aunque el día esté publicado (vuelos de ida y vuelta).
 calendario:
-  - {dia: 1,  fecha: "19–20", mes: dic, lugar: Hanói}
-  - {dia: 2,  fecha: "21", mes: dic, lugar: Hội An}
-  - {dia: 3,  fecha: "22", mes: dic, lugar: Hội An}
-  - {dia: 4,  fecha: "23", mes: dic, lugar: Hội An}
-  - {dia: 5,  fecha: "24", mes: dic, lugar: Phong Nha}
-  - {dia: 6,  fecha: "25", mes: dic, lugar: Phong Nha}
-  - {dia: 7,  fecha: "26", mes: dic, lugar: Phong Nha}
-  - {dia: 8,  fecha: "27", mes: dic, lugar: Ninh Bình}
-  - {dia: 9,  fecha: "28", mes: dic, lugar: Ninh Bình}
-  - {dia: 10, fecha: "29", mes: dic, lugar: Ninh Bình}
-  - {dia: 11, fecha: "30", mes: dic, lugar: Ninh Bình}
-  - {dia: 12, fecha: "31", mes: dic, lugar: Hanói}
-  - {dia: 13, fecha: "1",  mes: ene, lugar: Hanói}
-  - {dia: 14, fecha: "2",  mes: ene, lugar: Ha Long}
-  - {dia: 15, fecha: "3",  mes: ene, lugar: Ha Long}
-  - {dia: 16, fecha: "4",  mes: ene, lugar: Ha Long}
+  - {dia: 1,  fecha: "19–20", mes: dic, lugar: Hanói, fija: true, foto: assets/img/dias/01.jpg}
+  - {dia: 2,  fecha: "21", mes: dic, lugar: Hội An, foto: assets/img/dias/02.jpg}
+  - {dia: 3,  fecha: "22", mes: dic, lugar: Hội An, foto: assets/img/dias/03.jpg}
+  - {dia: 4,  fecha: "23", mes: dic, lugar: Hội An, foto: assets/img/dias/04.jpg}
+  - {dia: 5,  fecha: "24", mes: dic, lugar: Phong Nha, foto: assets/img/dias/05.jpg}
+  - {dia: 6,  fecha: "25", mes: dic, lugar: Phong Nha, foto: assets/img/dias/06.jpg}
+  - {dia: 7,  fecha: "26", mes: dic, lugar: Phong Nha, foto: assets/img/dias/07.jpg}
+  - {dia: 8,  fecha: "27", mes: dic, lugar: Ninh Bình, foto: assets/img/dias/08.jpg}
+  - {dia: 9,  fecha: "28", mes: dic, lugar: Ninh Bình, foto: assets/img/dias/09.jpg}
+  - {dia: 10, fecha: "29", mes: dic, lugar: Ninh Bình, foto: assets/img/dias/10.jpg}
+  - {dia: 11, fecha: "30", mes: dic, lugar: Ninh Bình, foto: assets/img/dias/11.jpg}
+  - {dia: 12, fecha: "31", mes: dic, lugar: Hanói, foto: assets/img/dias/12.jpg}
+  - {dia: 13, fecha: "1",  mes: ene, lugar: Hanói, foto: assets/img/dias/13.jpg}
+  - {dia: 14, fecha: "2",  mes: ene, lugar: Ha Long, foto: assets/img/dias/14.jpg}
+  - {dia: 15, fecha: "3",  mes: ene, lugar: Ha Long, foto: assets/img/dias/15.jpg}
+  - {dia: 16, fecha: "4",  mes: ene, lugar: Ha Long, fija: true, foto: assets/img/dias/16.jpg}

@@ -69,7 +69,7 @@ a:hover{color:var(--acento-hover)}
 .casilla__fecha{top:6px;font-family:var(--display);font-weight:800;font-size:clamp(18px,5.6vw,40px);line-height:1}
 .casilla__fecha small{display:block;font-family:var(--cuerpo);font-weight:600;font-size:clamp(10px,2.6vw,13px);letter-spacing:.1em;text-transform:uppercase;margin-top:2px}
 .casilla__lugar{bottom:6px;font-size:clamp(10px,2.7vw,14px);font-weight:600;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.casilla--futura img{filter:grayscale(.85) brightness(.55)}
+.casilla--futura img{filter:saturate(.45) brightness(.72)}
 .casilla--futura .casilla__fecha,.casilla--futura .casilla__lugar{color:#C9CEC9}
 .inicio__intro{margin:20px 4px 32px;font-size:16px;color:var(--suave);max-width:620px}
 

@@ -71,8 +71,10 @@ def construir(destino: Path, vista: bool):
     for c in site['calendario']:
         c = dict(c)
         c['entrada'] = por_dia.get(c['dia'])
-        c['imagen'] = (c['entrada']['ruta_url'] + c['entrada']['tarjeta']) if c['entrada'] \
-            else site['ciudades'][c['lugar']]
+        if c['entrada'] and not c.get('fija'):
+            c['imagen'] = c['entrada']['ruta_url'] + c['entrada']['tarjeta']
+        else:
+            c['imagen'] = c['foto']
         calendario.append(c)
     html = env.get_template('index.html').render(
         site=site, entradas=entradas, calendario=calendario, raiz='',
