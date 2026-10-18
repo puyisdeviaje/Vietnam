@@ -89,7 +89,12 @@ def totales(site, entradas):
 def entorno():
     env = Environment(loader=FileSystemLoader(RAIZ / 'tools' / 'templates'), autoescape=True)
     env.filters['md'] = lambda t: Markup(markdown.markdown(t or ''))
-    env.filters['km'] = lambda v: f"{float(v):.1f} km".replace('.', ',')
+    def km(v):
+        v = float(v or 0)
+        if v >= 100:   # 10.393 km
+            return f"{round(v):,} km".replace(',', '.')
+        return f"{v:.1f} km".replace('.', ',')   # 2,4 km
+    env.filters['km'] = km
     env.filters['entero'] = lambda v: f"{round(float(v or 0)):,}".replace(',', '.')
     env.filters['km_entero'] = env.filters['entero']
     env.filters['foto_por_n'] = lambda n, fotos: next(f for f in fotos if f['n'] == n)
