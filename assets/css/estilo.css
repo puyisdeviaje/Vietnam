@@ -75,6 +75,7 @@ a:hover{color:var(--acento-hover)}
 .casilla--cifras>a{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:8px;color:#141413}
 .casilla--cifras>a::after{display:none}
 .casilla--cifras>a:hover{background:var(--acento-hover);color:#141413}
+.cifras__titulo{font-family:var(--display);font-weight:800;font-size:clamp(14px,4.2vw,26px);line-height:1.05}
 .cifras__num{font-family:var(--display);font-weight:800;font-size:clamp(22px,7vw,48px);line-height:1}
 .cifras__txt{font-size:clamp(10px,2.7vw,14px);font-weight:700;line-height:1.15;margin-top:2px}
 .cifras__sub{font-size:clamp(9px,2.4vw,12px);font-weight:500;margin-top:4px;opacity:.8}

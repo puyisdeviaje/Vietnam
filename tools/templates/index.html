@@ -22,9 +22,8 @@
     {% endfor %}
     <li class="casilla casilla--cifras">
       <a href="estadisticas/" aria-label="Estadísticas del viaje">
-        <span class="cifras__num">{{ totales.km_total | entero }}</span>
-        <span class="cifras__txt">km recorridos</span>
-        <span class="cifras__sub">{{ totales.pasos | entero }} pasos · ver más →</span>
+        <span class="cifras__titulo">El viaje en números</span>
+        <span class="cifras__sub">{{ totales.km_total | entero }} km →</span>
       </a>
     </li>
   </ol>

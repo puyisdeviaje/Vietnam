@@ -23,6 +23,8 @@ transportes:
 contadores:
   - {clave: pho,     nombre: Cuencos de phở}
   - {clave: banh_mi, nombre: Bocadillos (bánh mì)}
+  - {clave: seven_eleven, nombre: Visitas al 7-Eleven}
+  - {clave: alojamientos, nombre: Alojamientos}
 
 # Los 19 días de la cuadrícula 4×5 (la casilla 20 muestra los kilómetros totales).
 # foto: imagen de la casilla hasta que se publica el día (fotos de Pexels).

@@ -9,6 +9,6 @@ extracto: ""
 estadisticas:
   pasos: 0
   km: {pie: 0, bici: 0, coche: 0, bus: 0, barco: 0, tren: 0, avion: 0}
-  contadores: {pho: 0, banh_mi: 0}
+  contadores: {pho: 0, banh_mi: 0, seven_eleven: 0, alojamientos: 0}
 fotos: []
 cuerpo: []
