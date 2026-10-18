@@ -65,9 +65,17 @@ def construir(destino: Path, vista: bool):
         if destino.exists():
             shutil.rmtree(destino)
         shutil.copytree(RAIZ / 'assets', destino / 'assets')
-    # Portada
+    # Portada: cuadrícula de días
+    por_dia = {e['dia']: e for e in entradas}
+    calendario = []
+    for c in site['calendario']:
+        c = dict(c)
+        c['entrada'] = por_dia.get(c['dia'])
+        c['imagen'] = (c['entrada']['ruta_url'] + c['entrada']['tarjeta']) if c['entrada'] \
+            else site['ciudades'][c['lugar']]
+        calendario.append(c)
     html = env.get_template('index.html').render(
-        site=site, entradas=entradas, raiz='',
+        site=site, entradas=entradas, calendario=calendario, raiz='',
         titulo_pagina=site['titulo'], descripcion=site['intro'],
         og_imagen=base + 'assets/img/compartir.jpg', og_url=base)
     (destino / 'index.html').write_text(html, encoding='utf-8')

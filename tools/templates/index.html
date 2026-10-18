@@ -1,47 +1,27 @@
 {% extends "base.html" %}
 {% block contenido %}
-<header class="envoltura cabecera">
-  <a href="{{ site.menu_viajes }}">← Todos los viajes</a>
-  <span class="cabecera__marca">Puyis de viaje</span>
-</header>
-
-<section class="portada">
-  <img src="assets/img/portada.jpg" alt="Vista de satélite de Hội An">
-  <div class="envoltura portada__texto">
-    <div class="etiqueta">{{ site.fechas }}</div>
+<main class="inicio">
+  <header class="inicio__cab">
+    <a class="inicio__volver" href="{{ site.menu_viajes }}">← Viajes</a>
+    <span class="cabecera__marca">Puyis de viaje</span>
+  </header>
+  <div class="inicio__titulo">
     <h1>{{ site.pais }}</h1>
-    <p>{{ site.intro }}</p>
+    <div class="etiqueta">{{ site.fechas }}</div>
   </div>
-</section>
 
-<section class="envoltura ruta">
-  <div class="etiqueta etiqueta--suave">La ruta</div>
-  <ol>
-    {% for r in site.ruta %}<li><strong>{{ r.lugar }}</strong><span>{{ r.fechas }}</span></li>{% endfor %}
-  </ol>
-</section>
-
-<section class="envoltura dias">
-  <div class="dias__cab">
-    <h2>El viaje, día a día</h2>
-    <span>Del primer día al último</span>
-  </div>
-  {% if entradas %}
-  <div class="rejilla">
-    {% for e in entradas %}
-    <a class="tarjeta" href="{{ e.ruta_url }}">
-      <img src="{{ e.ruta_url }}{{ e.tarjeta }}" alt="" loading="lazy">
-      <div class="etiqueta">Día {{ e.dia }} · {{ e.fecha_corta }}</div>
-      <h3>{{ e.titulo }}</h3>
-      {% if e.extracto %}<p>{{ e.extracto }}</p>{% endif %}
-    </a>
+  <ol class="calendario">
+    {% for c in calendario %}
+    <li class="casilla{% if not c.entrada %} casilla--futura{% endif %}">
+      {% if c.entrada %}<a href="{{ c.entrada.ruta_url }}" aria-label="Día {{ c.dia }}: {{ c.entrada.titulo }}">{% else %}<div>{% endif %}
+        <img src="{{ c.imagen }}" alt="" loading="{{ 'eager' if loop.index <= 8 else 'lazy' }}">
+        <span class="casilla__fecha">{{ c.fecha }}<small>{{ c.mes }}</small></span>
+        <span class="casilla__lugar">{{ c.lugar }}</span>
+      {% if c.entrada %}</a>{% else %}</div>{% endif %}
+    </li>
     {% endfor %}
-  </div>
-  {% else %}
-  <div class="vacio">
-    <strong>El viaje empieza el 19 de diciembre</strong>
-    Cada noche aparecerá aquí un nuevo día.
-  </div>
-  {% endif %}
-</section>
+  </ol>
+
+  <p class="inicio__intro">{{ site.intro }}</p>
+</main>
 {% endblock %}

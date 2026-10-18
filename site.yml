@@ -2,16 +2,36 @@
 titulo: Puyis en Vietnam
 pais: Vietnam
 fechas: 19 dic 2026 — 4 ene 2027
-dias_totales: 17
+dias_totales: 16
 intro: >-
-  17 días de norte a centro, contados cada noche con el mapa de lo que
+  16 días de norte a centro, contados cada noche con el mapa de lo que
   hemos recorrido y las fotos del día.
 url_base: https://puyisdeviaje.github.io/Vietnam/
 menu_viajes: https://puyisdeviajemenu.wordpress.com/
-ruta:
-  - {lugar: Hanói, fechas: 19–20 dic}
-  - {lugar: Hội An, fechas: 21–23 dic}
-  - {lugar: Phong Nha, fechas: 24–26 dic}
-  - {lugar: Ninh Bình, fechas: 27–30 dic}
-  - {lugar: Hanói, fechas: 31 dic–1 ene}
-  - {lugar: Bahía de Ha Long, fechas: 2–4 ene}
+
+# Foto provisional de cada ciudad (hasta que se publica el día)
+ciudades:
+  Hanói: assets/img/ciudades/hanoi.jpg
+  Hội An: assets/img/ciudades/hoi-an.jpg
+  Phong Nha: assets/img/ciudades/phong-nha.jpg
+  Ninh Bình: assets/img/ciudades/ninh-binh.jpg
+  Ha Long: assets/img/ciudades/ha-long.jpg
+
+# Los 16 días de la cuadrícula (el 19 y el 20 van juntos)
+calendario:
+  - {dia: 1,  fecha: "19–20", mes: dic, lugar: Hanói}
+  - {dia: 2,  fecha: "21", mes: dic, lugar: Hội An}
+  - {dia: 3,  fecha: "22", mes: dic, lugar: Hội An}
+  - {dia: 4,  fecha: "23", mes: dic, lugar: Hội An}
+  - {dia: 5,  fecha: "24", mes: dic, lugar: Phong Nha}
+  - {dia: 6,  fecha: "25", mes: dic, lugar: Phong Nha}
+  - {dia: 7,  fecha: "26", mes: dic, lugar: Phong Nha}
+  - {dia: 8,  fecha: "27", mes: dic, lugar: Ninh Bình}
+  - {dia: 9,  fecha: "28", mes: dic, lugar: Ninh Bình}
+  - {dia: 10, fecha: "29", mes: dic, lugar: Ninh Bình}
+  - {dia: 11, fecha: "30", mes: dic, lugar: Ninh Bình}
+  - {dia: 12, fecha: "31", mes: dic, lugar: Hanói}
+  - {dia: 13, fecha: "1",  mes: ene, lugar: Hanói}
+  - {dia: 14, fecha: "2",  mes: ene, lugar: Ha Long}
+  - {dia: 15, fecha: "3",  mes: ene, lugar: Ha Long}
+  - {dia: 16, fecha: "4",  mes: ene, lugar: Ha Long}
