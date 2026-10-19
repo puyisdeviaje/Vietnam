@@ -103,6 +103,7 @@ a:hover{color:var(--acento-hover)}
 .cuerpo{display:flex;flex-direction:column;gap:56px;padding-top:56px;padding-bottom:24px}
 .foto{margin:0;scroll-margin-top:24px}
 .foto img{width:100%;border-radius:6px;cursor:zoom-in}
+.foto img[data-vertical]{width:auto;max-width:100%;max-height:80vh;margin:0 auto}
 .foto figcaption{display:flex;align-items:center;gap:14px;padding-top:14px;font-size:16px;color:var(--texto-2)}
 .foto__n{flex:none;width:32px;height:32px;border-radius:50%;background:var(--acento);color:#141413;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
 .foto__hora{color:var(--suave);font-variant-numeric:tabular-nums}

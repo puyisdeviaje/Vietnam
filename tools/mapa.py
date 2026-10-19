@@ -45,6 +45,6 @@ def render(segs,estilo='hibrido',W=1600,H=1000,pad=140,titulo='',leyenda=(),atri
         y=150+60*i; d.line((72,y,132,y),fill=c,width=10); d.text((150,y-20),t,font=f,fill='#333')
     if atrib:
         w=d.textlength(atrib,font=s); d.rectangle((W-w-24,H-36,W,H),fill=(255,255,255,220)); d.text((W-w-12,H-32),atrib,font=s,fill='#555')
-    img.alpha_composite(ov); return img.convert('RGB')
+    img.alpha_composite(ov); out=img.convert('RGB'); out.proyeccion=(z,x0,y0,W,H); return out
 def km(p):
     return sum(math.hypot((c-a)*math.cos(math.radians(b))*111.32,(e-b)*110.57) for (a,b),(c,e) in zip(p,p[1:]))

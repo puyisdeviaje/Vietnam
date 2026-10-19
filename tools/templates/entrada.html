@@ -62,7 +62,7 @@
   {% if grupo | length > 1 %}<div class="pareja">{% endif %}
   {% for f in grupo %}
   <figure class="foto" id="foto-{{ f.n }}">
-    <img src="{{ f.archivo }}" alt="{{ f.pie | default('') }}" loading="lazy" data-visor>
+    <img src="{{ f.archivo }}" alt="{{ f.pie | default('') }}" loading="lazy" data-visor{% if f.vertical %} data-vertical{% endif %}>
     <figcaption><span class="foto__n">{{ f.n }}</span>{% if f.hora %}<span class="foto__hora">{{ f.hora }}</span>{% endif %}<span>{{ f.pie | default('') }}</span></figcaption>
   </figure>
   {% endfor %}
